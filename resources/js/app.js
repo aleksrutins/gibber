@@ -1,4 +1,5 @@
 import './bootstrap';
+import './sentry';
 
 import Alpine from 'alpinejs';
 
