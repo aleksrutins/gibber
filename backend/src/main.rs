@@ -14,8 +14,10 @@ async fn main() -> Result<(), std::io::Error> {
     }
     tracing_subscriber::fmt::init();
 
+    let port = env::var("PORT").map(|port_str| port_str.parse().expect("Failed to parse $PORT")).unwrap_or(3000u16);
+
     let app = Route::new().at("/hello/:name", get(hello));
-    Server::new(TcpListener::bind("127.0.0.1:3000"))
+    Server::new(TcpListener::bind(("0.0.0.0", port)))
       .run(app)
       .await
 }
