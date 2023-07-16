@@ -1,0 +1,10 @@
+(executable
+ (public_name backend)
+ (name main)
+ (libraries backend dream caqti-lwt caqti-driver-postgresql ppx_rapper_lwt)
+ (preprocess (pps lwt_ppx ppx_rapper)))
+
+(rule
+ (targets loginPage.ml)
+ (deps loginPage.eml.html)
+ (action (run dream_eml %{deps} --workspace %{workspace_root})))

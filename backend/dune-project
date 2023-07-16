@@ -1,0 +1,26 @@
+(lang dune 3.9)
+
+(name backend)
+
+(generate_opam_files true)
+
+(source
+ (github aleksrutins/gibber))
+
+(authors "Aleks Rutins")
+
+(maintainers "Aleks Rutins")
+
+(license LICENSE)
+
+(documentation https://url/to/documentation)
+
+(package
+ (name backend)
+ (synopsis "A short synopsis")
+ (description "A longer description")
+ (depends ocaml dune dream caqti-lwt caqti-driver-postgresql ppx_rapper ppx_rapper_lwt)
+ (tags
+  (topics "to describe" your project)))
+
+; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
