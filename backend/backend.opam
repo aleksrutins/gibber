@@ -14,9 +14,11 @@ depends: [
   "dune" {>= "3.9"}
   "dream"
   "caqti-lwt"
+  "caqti-driver-sqlite3"
   "caqti-driver-postgresql"
   "ppx_rapper"
   "ppx_rapper_lwt"
+  "tyxml"
   "odoc" {with-doc}
 ]
 build: [
