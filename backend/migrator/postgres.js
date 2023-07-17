@@ -1,9 +1,13 @@
-import * as pg from 'pg';
+import pg from 'pg';
 
 export function connect(connStr) {
-    return new pg.Client({connectionString: connStr});
+    return {driver: 'postgres', client: new pg.Client({connectionString: connStr})};
 }
 
-export function runSQL(db, sqlStr) {
-    return db.query(sqlStr);
+export function run(db, sqlStr, ...params) {
+    return db.client.query(sqlStr, params);
+}
+
+export function query(db, sqlStr, ...params) {
+    return db.client.query(sqlStr, params).then(res => res.rows);
 }

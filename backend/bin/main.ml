@@ -1,3 +1,13 @@
+let get_migrations = 
+  [%rapper
+    get_many
+      {sql|
+        SELECT @string{name}
+        FROM gibber_migrations
+      |sql}
+    function_out
+  ] (fun ~name -> name) ()
+
 let count until =
   let stream, push = Lwt_stream.create () in
   let close () = push None in
@@ -16,7 +26,17 @@ let count until =
 
 let schema =
   let open Graphql_lwt.Schema in
-  schema []
+  schema 
+    [
+      io_field "migrations"
+        ~typ:(non_null (list (non_null string)))
+        ~args:Arg.[]
+        ~resolve:(fun info () ->
+            Io.bind
+              (Dream.sql info.ctx get_migrations)
+              (fun value -> Io.return (Result.map_error (fun _err -> "") value))
+          )
+    ]
     ~subscriptions:[
       subscription_field "count"
         ~typ:(non_null int)
