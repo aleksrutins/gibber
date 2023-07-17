@@ -7,7 +7,7 @@ RUN sudo mkdir _build && sudo chmod 777 _build
 RUN eval $(opam env) && dune build
 
 FROM debian:11
-RUN apt-get install -y libev-dev libpq-dev libffi-dev libsqlite3-dev libssl-dev
+RUN apt-get update && apt-get install -y libev-dev libpq-dev libffi-dev libsqlite3-dev libssl-dev
 RUN mkdir /app
 WORKDIR /app
 COPY --from=build /src/_build/install/default/bin/backend /app/gibber
