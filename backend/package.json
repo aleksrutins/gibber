@@ -1,0 +1,12 @@
+{
+    "dependencies": {
+        "pg": "^8.11.1",
+        "sqlite3": "^5.1.6"
+    },
+    "scripts": {
+        "migrate": "node migrate.cjs"
+    },
+    "devDependencies": {
+        "flow-bin": "^0.212.0"
+    }
+}

@@ -19,7 +19,7 @@
  (name backend)
  (synopsis "A short synopsis")
  (description "A longer description")
- (depends ocaml dune dream caqti-lwt caqti-driver-postgresql ppx_rapper ppx_rapper_lwt)
+ (depends ocaml dune dream caqti-lwt caqti-driver-sqlite3 caqti-driver-postgresql ppx_rapper ppx_rapper_lwt tyxml)
  (tags
   (topics "to describe" your project)))
 

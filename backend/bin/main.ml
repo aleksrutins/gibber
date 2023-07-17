@@ -32,7 +32,7 @@ let () =
   let port = Sys.getenv_opt "PORT" |> Option.map int_of_string_opt |> Option.join |> Option.value ~default:3000 in
   Dream.run ~interface:"0.0.0.0" ~port
   @@ Dream.logger
-  @@ Dream.sql_pool (Sys.getenv_opt "DATABASE_URL" |> Option.value ~default:"")
+  @@ Dream.sql_pool (Sys.getenv_opt "DATABASE_URL" |> Option.value ~default:"sqlite3:db.sqlite")
   @@ Dream.sql_sessions
   @@ Dream.origin_referrer_check
   @@ Dream.router [
